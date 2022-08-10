@@ -19,7 +19,9 @@
 </head>
 <body>
 
-<button class="btn btn-primary rounded- position-fixed">+</button>
+<button class="btn btn-lg btn-primary rounded- position-fixed"
+        style="right:5px; bottom:5px; z-index:9;"
+        onclick="saveAll();">+</button>
 
 <div class="accordion" id="accordionExample">
     <div class="accordion-item">
@@ -838,15 +840,12 @@ Faster smaller steps are awesome for core
     // first, get the data from the html inputs
     // then, send them as a json object to our storage provider
     async function saveAll() {
-        getDataFromInputs();
+        getDataFromInputs("textarea");
 
-        const body = {
-            list: globalList,
-            breakdowns: globalBreakdownList
-        };
+        const body = globalList;
         const bodyJSON = JSON.stringify(body);
 
-        const request = new Request('https://api.npoint.io/09f00b9000d1a3a5902a', {
+        const request = new Request('https://api.npoint.io/67b8d52edece274a34cb', {
             method: 'POST',
             body: bodyJSON,
             headers: {'Authorization': 'Bearer PhKqhyh2LEhtBbRPLABwB7pq'}
